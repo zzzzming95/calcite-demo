@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultSchema": "TEST_CSV",
+  "schemas": [
+    {
+      "name": "TEST_CSV",
+      "type": "custom",
+      "factory": "pers.shezm.calcite.csv.CsvSchemaFactory",
+      "operand": {
+        "dataFile": "TEST01.csv,TEST02.csv"
+      }
+    }
+  ]
+}
