@@ -3,11 +3,12 @@ package pers.shezm.calcite.optimizer.cost;
 import org.apache.calcite.plan.RelOptUtil;
 import org.apache.calcite.rel.RelNode;
 import org.apache.calcite.rel.core.Filter;
-import org.apache.calcite.rel.logical.LogicalTableScan;
+import org.apache.calcite.rel.core.Project;
 import org.apache.calcite.rel.metadata.*;
 import org.apache.calcite.rex.RexNode;
 import org.apache.calcite.util.BuiltInMethod;
 import pers.shezm.calcite.optimizer.reloperators.CSVProject;
+import pers.shezm.calcite.optimizer.reloperators.CSVTableScan;
 import pers.shezm.calcite.optimizer.reloperators.NewCsvProject;
 
 public class CSVRelMdRowCount extends RelMdRowCount {
@@ -25,11 +26,15 @@ public class CSVRelMdRowCount extends RelMdRowCount {
 
     //以下两个方法用于测试 CBO 优化
     public Double getRowCount(NewCsvProject rel, RelMetadataQuery mq) {
-        return 100.0;
+        return 1.0;
     }
 
     public Double getRowCount(CSVProject rel, RelMetadataQuery mq) {
-        return 10.0;
+        return 1.0;
+    }
+
+    public Double getRowCount(Project rel, RelMetadataQuery mq) {
+        return 2.0;
     }
 
     //实现自己的 cost 计算逻辑

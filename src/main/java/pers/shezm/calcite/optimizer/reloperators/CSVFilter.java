@@ -21,6 +21,7 @@ public class CSVFilter extends Filter implements CSVRel {
         return new CSVFilter(getCluster(),this.traitSet,input,condition);
     }
 
+
     @Override
     public RelOptCost computeSelfCost(RelOptPlanner planner, RelMetadataQuery mq) {
 		RelNode input = this.input;
@@ -36,15 +37,18 @@ public class CSVFilter extends Filter implements CSVRel {
         //return mq.getCumulativeCost(this);
         //return VolcanoCost.FACTORY.makeZeroCost();
         double dRows = mq.getRowCount(this);
-        double dCpu = mq.getRowCount(getInput());
+//        double dCpu = mq.getRowCount(getInput());
+        double dCpu = dRows;
+
         double dIo = 0;
-        return planner.getCostFactory().makeCost(dRows, dCpu, dIo);
+//        return planner.getCostFactory().makeCost(dRows, dCpu, dIo);
+        return planner.getCostFactory().makeCost(2, 2, 2);
 
 
     }
 
     @Override
     public double estimateRowCount(RelMetadataQuery mq) {
-        return 1;
+        return 12;
     }
 }

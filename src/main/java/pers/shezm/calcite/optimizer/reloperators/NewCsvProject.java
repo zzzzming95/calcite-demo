@@ -21,7 +21,7 @@ public class NewCsvProject extends Project implements CSVRel {
 
     @Override
     public Project copy(RelTraitSet traitSet, RelNode input, List<RexNode> projects, RelDataType rowType) {
-        return new CSVProject(getCluster(),traitSet,input,projects,rowType);
+        return new NewCsvProject(getCluster(),traitSet,input,projects,rowType);
     }
 
     @Override
@@ -30,6 +30,10 @@ public class NewCsvProject extends Project implements CSVRel {
 
         double dCpu = dRows * exps.size();
         double dIo = 0;
-        return planner.getCostFactory().makeCost(dRows, dCpu, dIo);
+//        return planner.getCostFactory().makeCost(dRows, dCpu, dIo);
+        //返回不同的Cost，CBO的结果不一样
+        return planner.getCostFactory().makeCost(10, 10, 0);
+//        return planner.getCostFactory().makeCost(40, 40, 0);
+
     }
 }

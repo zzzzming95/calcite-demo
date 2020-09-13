@@ -30,6 +30,6 @@ public class CSVProject extends Project implements CSVRel {
 
         double dCpu = dRows * exps.size();
         double dIo = 0;
-        return planner.getCostFactory().makeCost(dRows, dCpu, dIo);
+        return planner.getCostFactory().makeCost(30, 30, 30);
     }
 }
