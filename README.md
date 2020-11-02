@@ -8,6 +8,5 @@ calcite的相关练习代码，包含CSV适配器，使用CSV适配器来进行S
 - - utils : 工具类
 # 关联博客
 
-> 有待补充
-
 [深入浅出Calcite与SQL CBO（Cost-Based Optimizer）优化](https://zhuanlan.zhihu.com/p/248796415)
+[Hive使用Calcite CBO优化流程及SQL优化实战](https://zhuanlan.zhihu.com/p/258081600)
